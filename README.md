@@ -35,7 +35,7 @@ By default, jenkins listens on port 8080
 
 Setting up Jenkins on the Web Console
 Input the Jenkins instance ip address on my web browser, this takes me to unlock jenkins.
-18.223.158.29:8080
+172.167.223.20:8080
 An administrator password is asked for which can be found in the jenkins instance
 sudo cat var/lib/jenkins/secrets/initialAdminPassword
 Installing suggested plugins
