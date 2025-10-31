@@ -1,4 +1,4 @@
-CAPSTONE PROJECT 7- AUTOMATING DEPLOYMENT OF AN E-COMMERCE WEBSITE! - CI/CD MASTERY
+CAPSTONE PROJECT 7- AUTOMATING DEPLOYMENT OF AN E-COMMERCE WEBSITE! - CI/CD 
 Project Scenario
 In this project, I am tasked to design and implement a robust CI/CD pipeline using Jenkins to automate the deployment of a web application. The goal is to achieve continuous integration, continuous deployment and ensure the scalability and reliability of the applications.
 
@@ -116,7 +116,7 @@ pipeline \{
     stages \{		
         stage('Connect To Github') \{
             steps \{
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevOyinda/DevOps-Capstone-Projects.git']])		
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/slarry07/Automating_E-Commmerce-Website.git']])		
             \}
         \}
         stage('Build Docker Image') \{		
@@ -129,7 +129,7 @@ pipeline \{
         stage('Run Docker Container') \{
             steps \{
                 script \{
-                    sh 'docker run -itd -p 8081:80 dockerfile'
+                    sh 'docker run -itd -p 8081:80 Dockerfile'
                 \}
             \}
         \}
@@ -139,7 +139,7 @@ agent any - PIPELINE CAN RUN ON ANY AVAILABLE AGENT
 
 stages \{ stage('Connect To Github') \} - DEFINES VARIOUS STAGES OF A PIPELINE
 
-checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs:[[url: 'https://github.com/DevOyinda/DevOps-Capstone-Projects.git']]) - THIS STAGE CHECKS OUT THE SOURCE CODE FROM A GITHUH REPO. SPECIFIES PIPELINE SHOULD USE MAIN BRANCH
+checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs:[[url: 'https://github.com/slarry07/Automating_E-Commmerce-Website.git']]) - THIS STAGE CHECKS OUT THE SOURCE CODE FROM A GITHUH REPO. SPECIFIES PIPELINE SHOULD USE MAIN BRANCH
 
 This script configures jenkins to build docker images and run a container with the built docker image.
 
@@ -192,10 +192,10 @@ pipeline {
     agent any
     
      environment {
-        DOCKER_IMAGE = 'devoyinda/cicd-mastery-capstone-project-7' // Replace with your Docker Hub image name
-        DOCKER_TAG = '3.0' // Replace with your desired tag
+        DOCKER_IMAGE = '' // Replace with your Docker Hub image name
+        DOCKER_TAG = '' // Replace with your desired tag
         DOCKER_CREDENTIALS = 'dockerhub_credentials' // Replace with the ID of your Jenkins credentials
-        DOCKER_USERNAME = 'devoyinda'
+        DOCKER_USERNAME = 'slarry07'
         DOCKER_PASSWORD = credentials('dockerhub_credentials') // Credentials ID
     }
     
@@ -203,13 +203,13 @@ pipeline {
     stages {
         stage('Connect To Github') {
             steps {
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevOyinda/DevOps-Capstone-Projects.git']])
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/slarry07/Automating_E-Commmerce-Website.git']])
             }
         }
         stage('Build Docker Image') {
             steps {
                     // Navigate to the directory containing the Dockerfile
-                    dir('07.CICD-Mastery') {
+                    dir('Automating_E-Commmerce-Website') {
                         script {
                         // Build the Docker image
                         docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}")
@@ -240,7 +240,7 @@ pipeline {
                         sh "docker rm ${isPortInUse}"
                     }
                      // Run a new container using the built image
-                    sh 'docker run -itd -p 8081:80 devoyinda/cicd-mastery-capstone-project-7:3.0'
+                    sh 'docker run -itd -p 8081:80 '
                 }
             }
         }
